@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% load static %}
+
+{% block title %}
+    | Welcome
+{% endblock %}
+
+{% block content %}
+
+    <main role="main">
+		<section class="jumbotron text-center">
+			<div class="container">
+				<h1 class="jumbotron-heading">Regression Presentation</h1>
+				<p class="lead text-muted">Linear, Multiple Linear, Polynomial, Support Vector Regression (SVR), Decision Tree, Random Forest</p>
+			</div>
+		</section>
+		<div class="album py-5 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="card mb-4 shadow-sm">
+    						<a href="{% url 'linear_regression' %}">
+    							<img src="{% static 'images/linear_regression.png' %}" maxheight="225" width="100%" />
+							</a>
+							<div class="card-body">
+								<p class="card-text">Linear Regression</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										<a href="{% url 'linear_regression' %}" class="btn btn-sm btn-outline-secondary">View</a>
+										<a href="{% url 'linear_regression_play' %}" class="btn btn-sm btn-outline-secondary">Play</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card mb-4 shadow-sm">
+    						<a href="{% url 'multiple_linear_regression' %}">
+    							<img src="{% static 'images/multiple_linear_regression.png' %}" maxheight="225" width="100%" />
+							</a>
+							<div class="card-body">
+								<p class="card-text">Multiple Linear Regression</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										<a href="{% url 'multiple_linear_regression' %}" class="btn btn-sm btn-outline-secondary">View</a>
+										<a href="{% url 'multiple_linear_regression_play' %}" class="btn btn-sm btn-outline-secondary">Play</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card mb-4 shadow-sm">
+    						<a href="{% url 'polynomial_regression' %}">
+    							<img src="{% static 'images/polynomial_regression.png' %}" maxheight="225" width="100%" />
+    						</a>
+							<div class="card-body">
+								<p class="card-text">Polynomial Regression</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										<a href="{% url 'polynomial_regression' %}" class="btn btn-sm btn-outline-secondary">View</a>
+										<a href="{% url 'polynomial_regression_play' %}" class="btn btn-sm btn-outline-secondary">Play</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card mb-4 shadow-sm">
+    						<a href="{% url 'svr' %}">
+    							<img src="{% static 'images/svr.png' %}" maxheight="225" width="100%" />
+							</a>
+							<div class="card-body">
+								<p class="card-text">Support Vector Regression (SVR)</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										<a href="{% url 'svr' %}" class="btn btn-sm btn-outline-secondary">View</a>
+										<a href="{% url 'svr_play' %}" class="btn btn-sm btn-outline-secondary">Play</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card mb-4 shadow-sm">
+    						<a href="{% url 'decision_tree' %}">
+    							<img src="{% static 'images/decision_tree.png' %}" maxheight="225" width="100%" />
+							</a>
+							<div class="card-body">
+								<p class="card-text">Decision Tree</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										<a href="{% url 'decision_tree' %}" class="btn btn-sm btn-outline-secondary">View</a>
+										<a href="{% url 'decision_tree_play' %}" class="btn btn-sm btn-outline-secondary">Play</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card mb-4 shadow-sm">
+    						<a href="{% url 'random_forest' %}">
+    							<img src="{% static 'images/random_forest.png' %}" maxheight="225" width="100%" />
+							</a>
+							<div class="card-body">
+								<p class="card-text">Random Forest</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										<a href="{% url 'random_forest' %}" class="btn btn-sm btn-outline-secondary">View</a>
+										<a href="{% url 'random_forest_play' %}" class="btn btn-sm btn-outline-secondary">Play</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+{% endblock %}

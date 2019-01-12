@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}
+    | Support Vector Regression (SVR)
+{% endblock %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Support Vector Regression (SVR)</li>
+        </ol>
+    </nav>
+    <div class="jumbotron">
+        <h1 class="display-4">Support Vector Regression (SVR)</h1>
+        <p class="lead">SVR is an regression algorithm used to work with continuous values.</p>
+        <hr class="my-4">
+        <p>In simple regression the goal is to minimise the error rate. SVR tries to fit a line to data by minimising a cost function. However, the interesting part about SVR is that it can be deployed with a non-linear kernel. In this case ending making non-linear regression, i.e. fitting a curve rather than a line.</p>
+        <p>This example shows the relation between the years of experience and salary of employees at a company.</p>
+        <center>
+            <a style="margin-top: 20px;" href="{% url 'svr_play' %}" class="btn btn-primary btn-lg">Play</a>
+        </center>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}
+    | Decision Tree
+{% endblock %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Decision Tree</li>
+        </ol>
+    </nav>
+    <div class="jumbotron">
+        <h1 class="display-4">Decision Tree</h1>
+        <p class="lead">Decision tree builds regression or classification models in the form of a tree structure.</p>
+        <hr class="my-4">
+        <p>It breaks down a dataset into smaller and smaller subsets while at the same time an associated decision tree is incrementally developed. The final result is a tree with decision nodes and leaf nodes. A decision node has two or more branches, each representing values for the attribute tested. Leaf node represents a decision on the numerical target. The topmost decision node in a tree which corresponds to the best predictor, called root node.</p>
+        <p>This example shows the relation between the years of experience and salary of employees at a company.</p>
+        <center>
+            <a style="margin-top: 20px;" href="{% url 'decision_tree_play' %}" class="btn btn-primary btn-lg">Play</a>
+        </center>
+    </div>
+{% endblock %}

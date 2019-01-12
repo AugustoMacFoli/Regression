@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}
+    | Multiple Linear Regression
+{% endblock %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Multiple Linear Regression</li>
+        </ol>
+    </nav>
+    <div class="jumbotron">
+        <h1 class="display-4">Multiple Linear Regression</h1>
+        <p class="lead">The extension from single predictor variable to multiple and/or vector-valued predictor variables is known as multiple linear regression, also known as multivariable linear regression.</p>
+        <hr class="my-4">
+        <p>Nearly all real-world regression models involve multiple predictors, and basic descriptions of linear regression are often phrased in terms of the multiple regression model.</p>
+        <p>In this example, the algorithm uses 3 variables (R&D, Administration and Marketing investment) to predict a company's profits.</p>
+        <center>
+            <a style="margin-top: 20px;" href="{% url 'multiple_linear_regression_play' %}" class="btn btn-primary btn-lg">Play</a>
+        </center>
+    </div>
+{% endblock %}

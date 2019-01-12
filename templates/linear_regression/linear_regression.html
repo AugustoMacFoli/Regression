@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}
+    | Linear Regression
+{% endblock %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Linear Regression</li>
+        </ol>
+    </nav>
+    <div class="jumbotron">
+        <h1 class="display-4">Linear Regression</h1>
+        <p class="lead">Linear regression was the first type of regression analysis to be studied rigorously, and to be used extensively in practical applications. This is because models which depend linearly on their unknown parameters are easier to fit than models which are non-linearly related to their parameters and because the statistical properties of the resulting estimators are easier to determine.</p>
+        <hr class="my-4">
+        <p>A fitted linear regression model can be used to identify the relationship between a single predictor variable X and the response variable Y when all the other predictor variables in the model are held fixed.</p>
+        <p>This example shows the relation between the years of experience and salary of employees at a company.</p>
+        <center>
+            <a style="margin-top: 20px;" href="{% url 'linear_regression_play' %}" class="btn btn-primary btn-lg">Play</a>
+        </center>
+    </div>
+{% endblock %}

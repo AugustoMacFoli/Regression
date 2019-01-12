@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/site.css' %}">
+        <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+        <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+        <title>Regression Presentation {% block title %} {% endblock %}</title>
+        <style>
+            @media screen and (max-width: 600px) {
+              .tabela {
+                font-size: xx-small;
+              }
+            }
+        </style>
+    </head>    
+    <header>
+		<div class="collapse bg-dark" id="navbarHeader">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 col-md-7 py-4">
+						<h4 class="text-white">About</h4>
+						<p class="text-muted">Data Science in Python with Django - Regression</p>
+					</div>
+					<div class="col-sm-4 offset-md-1 py-4">
+						<h4 class="text-white">Contact</h4>
+						<ul class="list-unstyled">
+							<li><a href="mailto:augusto.mfo@gmail.com" class="text-white">E-mail</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="navbar navbar-dark bg-dark shadow-sm">
+			<div class="container d-flex justify-content-between">
+				<a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center">
+					<i class="fas fa-laptop" style="margin-right: 6px;"></i>
+					<strong>Regression</strong>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+			</div>
+		</div>
+	</header>    
+    <body>
+        {% block content %} {% endblock %}
+        <footer class="text-muted">
+    		<div class="container">
+    			<p class="float-right">
+    				<a href="#">Back to top</a>
+    			</p>
+    		</div>
+    	</footer>
+        <!-- Footer -->
+        <footer id="main-footer" class="py-4 bg-primary text-white text-center">
+        	2019 &copy; <span class="year"></span> Augusto Oliveira
+        </footer>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/lightbox.min.js' %}"></script>
+        <script src="{% static 'js/font-awesome.js' %}"></script>
+    </body>
+</html>

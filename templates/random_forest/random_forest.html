@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}
+    | Random Forest
+{% endblock %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Random Forest</li>
+        </ol>
+    </nav>
+    <div class="jumbotron">
+        <h1 class="display-4">Random Forest</h1>
+        <p class="lead">Random forests are a way of averaging multiple deep decision trees, trained on different parts of the same training set, with the goal of reducing the variance.</p>
+        <hr class="my-4">
+        <p>A random forest is a meta estimator that fits a number of classifying decision trees on various sub-samples of the dataset and uses averaging to improve the predictive accuracy and control over-fitting.</p>
+        <p>This example shows the relation between the years of experience and salary of employees at a company.</p>
+        <center>
+            <a style="margin-top: 20px;" href="{% url 'random_forest_play' %}" class="btn btn-primary btn-lg">Play</a>
+        </center>
+    </div>
+{% endblock %}

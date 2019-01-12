@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %}
+    | Polynomial Regression
+{% endblock %}
+
+{% block content %}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Polynomial Regression</li>
+        </ol>
+    </nav>
+    <div class="jumbotron">
+        <h1 class="display-4">Polynomial Regression</h1>
+        <p class="lead">Polynomial regression is a form of regression analysis in which the relationship between the independent variable x and the dependent variable y is modelled as an <i>n</i>th degree polynomial in x.</p>
+        <hr class="my-4">
+        <p>It fits a nonlinear relationship between the value of x and the corresponding conditional mean of y, and has been used to describe nonlinear phenomena such as the growth rate of tissues, the distribution of carbon isotopes in lake sediments and the progression of disease epidemics.</p>
+        <p>This example shows the relation between the years of experience and salary of employees at a company.</p>
+        <center>
+            <a style="margin-top: 20px;" href="{% url 'polynomial_regression_play' %}" class="btn btn-primary btn-lg">Play</a>
+        </center>
+    </div>
+{% endblock %}
