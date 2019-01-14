@@ -19,7 +19,7 @@
         	<div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
         		<div class="modal-content">
         			<div class="modal-header">
-        				<h5 class="modal-title">All Data</h5>
+        				<h5 class="modal-title">All Salary Data</h5>
         				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
         				<span aria-hidden="true">&times;</span>
         				</button>
@@ -33,11 +33,29 @@
         		</div>
         	</div>
         </div>
+        <div class="modal" id="train_set_modal" tabindex="-1" role="dialog">
+        	<div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+        		<div class="modal-content">
+        			<div class="modal-header">
+        				<h5 class="modal-title">Train Set Results</h5>
+        				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        				<span aria-hidden="true">&times;</span>
+        				</button>
+        			</div>
+        			<div class="modal-body">
+        				<img class="col" src="data:image/png;base64,{{ b64_train }}"/>
+        			</div>
+        			<div class="modal-footer">
+        				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        			</div>
+        		</div>
+        	</div>
+        </div>
         <div class="modal" id="test_set_modal" tabindex="-1" role="dialog">
         	<div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
         		<div class="modal-content">
         			<div class="modal-header">
-        				<h5 class="modal-title">Random Forest Results</h5>
+        				<h5 class="modal-title">Test Set Results</h5>
         				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
         				<span aria-hidden="true">&times;</span>
         				</button>
@@ -82,14 +100,41 @@
                 	<div class="card mb-4 shadow-sm">
                 		<div class="card-body">
                     		<div class="row" style="text-align:center;">
-                    			<div class="col">Random Forest</div>
+                    			<div class="col">Train Records</div>
                                 <div class="w-100"></div>
                                 <div class="col">Experience</div>
                                 <div class="col">Salary</div>
                                 <div class="w-100"></div>
-                                {% for value in all_values %}
+                                {% for value in train_values %}
                                     <div class="col">{{ value.0 }}</div>
                                     <div class="col">{{ value.1 | intcomma }}</div>
+                                    <div class="w-100"></div>
+                                {% endfor %}
+                    		</div>
+                    		<div class="row" style="text-align: center; margin-top: 10px;">
+                                <div class="col">
+                                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#train_set_modal">
+                                        <i class="fas fa-chart-line"></i> Results
+                                    </button>
+                                </div>
+                            </div>
+                    	</div>
+                	</div>
+                </div>
+                <div class="col-md-4">
+                	<div class="card mb-4 shadow-sm">
+                		<div class="card-body">
+                    		<div class="row" style="text-align:center;">
+                    			<div class="col">Test Records</div>
+                                <div class="w-100"></div>
+                                <div class="col">Experience</div>
+                                <div class="col">Salary</div>
+                                <div class="col">Predicted</div>
+                                <div class="w-100"></div>
+                                {% for value in test_values %}
+                                    <div class="col">{{ value.0 }}</div>
+                                    <div class="col">{{ value.1.0 | intcomma }}</div>
+                                    <div class="col">{{ value.1.1 | intcomma }}</div>
                                     <div class="w-100"></div>
                                 {% endfor %}
                             </div>
@@ -98,10 +143,11 @@
                             		</br>
                             		</br>
                                     <div class="input-group mb-3">
-                                    <input type="text" pattern="^\d*(\.\d{0,2})?$" name="user_number" class="form-control" placeholder="Input Level">
+                                    <input type="text" pattern="^\d*(\.\d{0,2})?$" value="{{ user_values.0 }}" name="user_number" class="form-control" placeholder="Input Experience" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             {% csrf_token %}
-                                            <input type="submit" class="btn btn-outline-secondary" value="Predict"></input>
+                                            <input type="hidden" name="curr_rdm" value="{{ curr_rdm }}"></input>
+                                        	<input type="submit" class="btn btn-outline-secondary" value="Predict"></input>
                                         </div>
                                     </div>
                                 </form>
@@ -112,7 +158,7 @@
                                     <div class="col">Prediction</div>
                                     <div class="w-100"></div>
                                     <div class="col">Experience</div>
-                                    <div class="col">Est. Salary</div>
+                                    <div class="col">Est. Value</div>
                                     <div class="w-100"></div>
                                     <div class="col">{{ user_values.0 }}</div>
                                     <div class="col" style="color: red;">{{ user_values.1 | intcomma }}</div>
