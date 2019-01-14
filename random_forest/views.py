@@ -26,9 +26,12 @@ def random_forest_play(request):
     y_pred = regressor.predict(X_test)
     user_values = []
     if request.POST:
-        user_number = float(request.POST['user_number'])
-        user_pred = regressor.predict([[user_number]])
-        user_values = [user_number, user_pred]
+        try:
+            user_number = float(request.POST['user_number'])
+            user_pred = regressor.predict([[user_number]])
+            user_values = [user_number, user_pred]
+        except:
+            pass
     all_values = []
     for i in range(X.__len__()):
         all_values += [(X[i, 0], int(y[i]))]
