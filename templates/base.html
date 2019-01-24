@@ -20,6 +20,15 @@
         </style>
     </head>    
     <header>
+        <div class="modal" id="loading_modal" tabindex="-1" role="dialog">
+        	<div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+        		<div class="modal-content">
+        			<div class="modal-body" style="background-color: transparent; text-align: center;">
+        				loading...
+        			</div>
+        		</div>
+        	</div>
+        </div>
 		<div class="collapse bg-dark" id="navbarHeader">
 			<div class="container">
 				<div class="row">
@@ -62,8 +71,16 @@
         	2019 &copy; <span class="year"></span> Augusto Oliveira
         </footer>
         <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/jquery.mask.min.js' %}"></script>
         <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
         <script src="{% static 'js/lightbox.min.js' %}"></script>
         <script src="{% static 'js/font-awesome.js' %}"></script>
     </body>
+    <script type="text/javascript">
+        $(".money").mask("000,000", { reverse: true });
+        $(".loading").click(function () {
+            $(".loading").blur();
+            $("#loading_modal").show();
+        });
+    </script>
 </html>

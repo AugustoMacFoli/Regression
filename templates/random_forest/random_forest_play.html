@@ -71,111 +71,107 @@
         </div>
         <div class="container" style="margin-top:10px;">
             <div class="row">
+        		<form class="col-md-4" method="POST" action="{% url 'random_forest_play' %}">
+            		<h4>Make a prediction:</h4>
+                    <div class="input-group">
+                        <input style="min-width: 100px;" type="text" value="{{ user_values.0 }}" name="user_number" class="form-control" placeholder="Experience">
+                        <div class="input-group-append">
+                            {% csrf_token %}
+                            <input type="hidden" name="curr_rdm" value="{{ curr_rdm }}"></input>
+                        	<input type="submit" class="btn btn-outline-secondary loading" value="Predict"></input>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% if user_values %}
+                <div class="row m-1">
+                    Experience: {{ user_values.0 }}
+                    </br> Salary: ${{ user_values.1 | intcomma }}
+                </div>
+            {% endif %}
+            <div class="row mt-3">
+                <div class="col">
+                    <button type="button" class="btn btn-outline-secondary w-100 mb-3" data-toggle="modal" data-target="#all_set_modal">
+                        <i class="fas fa-chart-line"></i> View All Data
+                    </button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-outline-secondary w-100 mb-3" data-toggle="modal" data-target="#train_set_modal">
+                        <i class="fas fa-chart-line"></i> View Train Results
+                    </button>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-outline-secondary w-100 mb-3" data-toggle="modal" data-target="#test_set_modal">
+                        <i class="fas fa-chart-line"></i> View Test Results
+                    </button>
+                </div>
+            </div>
+            <div class="row" style="font-size: xx-small;">
                 <div class="col-md-4">
                 	<div class="card mb-4 shadow-sm">
                 		<div class="card-body">
+                    		<div class="row" style="text-align: center; margin-top: 10px;">
+                        		<div class="col">All Records</div>
+                                <div class="w-100">
+                                    </br>
+                                </div>
+                            </div>
                     		<div class="row" style="text-align:center;">
-                    			<div class="col">All Records</div>
-                                <div class="w-100"></div>
                                 <div class="col">Experience</div>
                                 <div class="col">Salary</div>
                                 <div class="w-100"></div>
                                 {% for value in all_values %}
                                     <div class="col">{{ value.0 }}</div>
-                                    <div class="col">{{ value.1 | intcomma }}</div>
+                                    <div class="col">${{ value.1 | intcomma }}</div>
                                     <div class="w-100"></div>
                                 {% endfor %}
                     		</div>
-                    		<div class="row" style="text-align: center; margin-top: 10px;">
-                                <div class="col">
-                                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#all_set_modal">
-                                        <i class="fas fa-chart-line"></i> View
-                                    </button>
-                                </div>
-                            </div>
                     	</div>
                 	</div>
                 </div>
                 <div class="col-md-4">
                 	<div class="card mb-4 shadow-sm">
                 		<div class="card-body">
+                    		<div class="row" style="text-align: center; margin-top: 10px;">
+                        		<div class="col">Train Records</div>
+                                <div class="w-100">
+                                    </br>
+                                </div>
+                            </div>
                     		<div class="row" style="text-align:center;">
-                    			<div class="col">Train Records</div>
-                                <div class="w-100"></div>
                                 <div class="col">Experience</div>
                                 <div class="col">Salary</div>
                                 <div class="w-100"></div>
                                 {% for value in train_values %}
                                     <div class="col">{{ value.0 }}</div>
-                                    <div class="col">{{ value.1 | intcomma }}</div>
+                                    <div class="col">${{ value.1 | intcomma }}</div>
                                     <div class="w-100"></div>
                                 {% endfor %}
                     		</div>
-                    		<div class="row" style="text-align: center; margin-top: 10px;">
-                                <div class="col">
-                                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#train_set_modal">
-                                        <i class="fas fa-chart-line"></i> Results
-                                    </button>
-                                </div>
-                            </div>
                     	</div>
                 	</div>
                 </div>
                 <div class="col-md-4">
                 	<div class="card mb-4 shadow-sm">
                 		<div class="card-body">
+                    		<div class="row" style="text-align: center; margin-top: 10px;">
+                        		<div class="col">Test Records</div>
+                                <div class="w-100">
+                                    </br>
+                                </div>
+                            </div>
                     		<div class="row" style="text-align:center;">
-                    			<div class="col">Test Records</div>
-                                <div class="w-100"></div>
                                 <div class="col">Experience</div>
                                 <div class="col">Salary</div>
                                 <div class="col">Predicted</div>
                                 <div class="w-100"></div>
                                 {% for value in test_values %}
                                     <div class="col">{{ value.0 }}</div>
-                                    <div class="col">{{ value.1.0 | intcomma }}</div>
-                                    <div class="col">{{ value.1.1 | intcomma }}</div>
+                                    <div class="col">${{ value.1.0 | intcomma }}</div>
+                                    <div class="col">${{ value.1.1 | intcomma }}</div>
                                     <div class="w-100"></div>
                                 {% endfor %}
                             </div>
-                    		<div class="row">
-                        		<form class="col" method="POST" action="{% url 'random_forest_play' %}">
-                            		</br>
-                            		</br>
-                                    <div class="input-group mb-3">
-                                    <input type="text" pattern="^\d*(\.\d{0,2})?$" value="{{ user_values.0 }}" name="user_number" class="form-control" placeholder="Input Experience" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="curr_rdm" value="{{ curr_rdm }}"></input>
-                                        	<input type="submit" class="btn btn-outline-secondary" value="Predict"></input>
-                                        </div>
-                                    </div>
-                                </form>
-                    		</div>
-                    		{% if user_values %}
-                        		<div class="row" style="text-align:center;">
-                                    <div class="w-100"></div>
-                                    <div class="col">Prediction</div>
-                                    <div class="w-100"></div>
-                                    <div class="col">Experience</div>
-                                    <div class="col">Est. Value</div>
-                                    <div class="w-100"></div>
-                                    <div class="col">{{ user_values.0 }}</div>
-                                    <div class="col" style="color: red;">{{ user_values.1 | intcomma }}</div>
-                                </div>
-                            {% endif %}
-                            <div class="row" style="text-align: center; margin-top: 10px;">
-                                <div class="col">
-                                    <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#test_set_modal">
-                                        <i class="fas fa-chart-line"></i> Results
-                                    </button>
-                                </div>
-                            </div>
-                            {% if user_values %}
-                                <script>
-                                    window.scrollTo(0,document.body.scrollHeight);
-                                </script>
-                            {% endif %}
                     	</div>
                 	</div>
                 </div>

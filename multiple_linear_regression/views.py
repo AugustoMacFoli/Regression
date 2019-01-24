@@ -25,9 +25,9 @@ def multiple_linear_regression_play(request):
     user_values = []
     if request.POST:
         try:
-            txt_rd = float(request.POST['txt_rd'])
-            txt_admin = float(request.POST['txt_admin'])
-            txt_mkt = float(request.POST['txt_mkt'])
+            txt_rd = int(request.POST['txt_rd'].replace(',', ''))
+            txt_admin = int(request.POST['txt_admin'].replace(',', ''))
+            txt_mkt = int(request.POST['txt_mkt'].replace(',', ''))
             user_pred = regressor.predict([[txt_rd, txt_admin, txt_mkt]])
             user_values = [txt_rd, txt_admin, txt_mkt, user_pred]
         except:
@@ -95,14 +95,14 @@ def multiple_linear_regression_play(request):
     buf.close()
     all_values = []
     for i in range(X.__len__()):
-        all_values += [[X[i, 0], X[i, 1], X[i, 2], int(y[i])]]
+        all_values += [[int(X[i, 0]), int(X[i, 1]), int(X[i, 2]), int(y[i])]]
     train_values = []
     for i in range(X_train.__len__()):
-        train_values += [[X_train[i, 0], X_train[i, 1], X_train[i, 2], int(y_train[i])]]
+        train_values += [[int(X_train[i, 0]), int(X_train[i, 1]), int(X_train[i, 2]), int(y_train[i])]]
     train_values = sorted(train_values, key=lambda value: value[3], reverse=True)
     test_values = []
     for i in range(X_test.__len__()):
-        test_values += [[X_test[i, 0], X_test[i, 1], X_test[i, 2], int(y_test[i]), int(y_pred[i])]]
+        test_values += [[int(X_test[i, 0]), int(X_test[i, 1]), int(X_test[i, 2]), int(y_test[i]), int(y_pred[i])]]
     test_values = sorted(test_values, key=lambda value: value[3], reverse=True)
     context = {
         'all_values': all_values,
