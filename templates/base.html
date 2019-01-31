@@ -57,25 +57,23 @@
 			</div>
 		</div>
 	</header>    
-    <body>
-        {% block content %} {% endblock %}
-        <footer class="text-muted">
-    		<div class="container">
-    			<p class="float-right">
-    				<a href="#">Back to top</a>
-    			</p>
-    		</div>
-    	</footer>
-        <!-- Footer -->
-        <footer id="main-footer" class="py-4 bg-primary text-white text-center">
-        	2019 &copy; <span class="year"></span> Augusto Oliveira
-        </footer>
-        <script src="{% static 'js/jquery.min.js' %}"></script>
-        <script src="{% static 'js/jquery.mask.min.js' %}"></script>
-        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'js/lightbox.min.js' %}"></script>
-        <script src="{% static 'js/font-awesome.js' %}"></script>
-    </body>
+    {% block content %} {% endblock %}
+    <footer class="text-muted">
+		<div class="container">
+			<p class="float-right">
+				<a href="#">Back to top</a>
+			</p>
+		</div>
+	</footer>
+    <!-- Footer -->
+    <footer id="main-footer" class="py-4 bg-primary text-white text-center">
+    	2019 &copy; <span class="year"></span> Augusto Oliveira
+    </footer>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery.mask.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/lightbox.min.js' %}"></script>
+    <script src="{% static 'js/font-awesome.js' %}"></script>
     <script type="text/javascript">
         $(".money").mask("000,000", { reverse: true });
         $(".loading").click(function () {

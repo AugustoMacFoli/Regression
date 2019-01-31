@@ -72,12 +72,13 @@ def linear_regression_play(request):
     matplotlib.pyplot.scatter(X_test, y_test, c=numpy.random.rand(X_test.__len__(),))
     if user_values:
         try:
-            matplotlib.pyplot.scatter(user_number, user_pred, color = 'red')
+            matplotlib.pyplot.scatter(user_number, user_pred, color = 'red', label = 'User')
         except:
             pass
     matplotlib.pyplot.plot(X_train, regressor.predict(X_train), color = 'blue', alpha=0.6)
     matplotlib.pyplot.xlabel('Years of Experience')
     matplotlib.pyplot.ylabel('Salary')
+    matplotlib.pyplot.legend()
     matplotlib.pyplot.tight_layout()
     buf = io.BytesIO()
     matplotlib.pyplot.savefig(buf, format='png')

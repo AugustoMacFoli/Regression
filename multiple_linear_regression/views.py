@@ -78,7 +78,7 @@ def multiple_linear_regression_play(request):
     if user_values:
         try:
             y_predicted = regressor.predict([[txt_rd, txt_admin, txt_mkt]])
-            matplotlib.pyplot.scatter(txt_rd, y_predicted, color = 'red', label='Pred', alpha=0.6)
+            matplotlib.pyplot.scatter(txt_rd, y_predicted, color = 'red', label='User', alpha=0.6)
             matplotlib.pyplot.scatter(txt_admin, y_predicted, color = 'red', alpha=0.6)
             matplotlib.pyplot.scatter(txt_mkt, y_predicted, color = 'red', alpha=0.6)
             matplotlib.pyplot.axhline(y=y_predicted, color='red', linestyle='-', alpha=0.2)

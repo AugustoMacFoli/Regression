@@ -91,12 +91,13 @@ def polynomial_regression_play(request):
     matplotlib.pyplot.scatter(X_test, y_test, c = numpy.random.rand(X_test.__len__(),))
     if request.POST:
         try:
-            matplotlib.pyplot.scatter(user_number, lin_reg_2.predict(poly_reg.fit_transform([[user_number]])), color = 'red')
+            matplotlib.pyplot.scatter(user_number, lin_reg_2.predict(poly_reg.fit_transform([[user_number]])), color = 'red', label='User')
         except:
             pass
     matplotlib.pyplot.plot(X_grid, lin_reg_2.predict(poly_reg.fit_transform(X_grid)), color = 'blue', alpha = 0.4)
     matplotlib.pyplot.xlabel('Years of Experience')
     matplotlib.pyplot.ylabel('Salary')
+    matplotlib.pyplot.legend()
     matplotlib.pyplot.tight_layout()
     buf = io.BytesIO()
     matplotlib.pyplot.savefig(buf, format='png')

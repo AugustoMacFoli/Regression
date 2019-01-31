@@ -83,10 +83,11 @@ def svr_play(request):
     X_grid = X_grid.reshape((len(X_grid), 1))
     matplotlib.pyplot.scatter(X_test, y_test, c = numpy.random.rand(X_test.__len__(),))
     if user_values:
-        matplotlib.pyplot.scatter(scaled_user_number, regressor.predict(sc_X.transform(numpy.array([[user_number]]))), color = 'red')
+        matplotlib.pyplot.scatter(scaled_user_number, regressor.predict(sc_X.transform(numpy.array([[user_number]]))), color = 'red', label='User')
     matplotlib.pyplot.plot(X_grid, regressor.predict(X_grid), color = 'blue', alpha = 0.6)
     matplotlib.pyplot.xlabel('Years of Experience (scaled)')
     matplotlib.pyplot.ylabel('Salary (scaled)')
+    matplotlib.pyplot.legend()
     matplotlib.pyplot.tight_layout()
     buf = io.BytesIO()
     matplotlib.pyplot.savefig(buf, format='png')

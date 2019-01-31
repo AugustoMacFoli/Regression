@@ -101,7 +101,7 @@
                     </button>
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btn-outline-secondary w-100 mb-3" data-toggle="modal" data-target="#test_set_modal">
+                    <button type="button" id="btnTestResults" class="btn btn-outline-secondary w-100 mb-3" data-toggle="modal" data-target="#test_set_modal">
                         <i class="fas fa-chart-line"></i> View Test Results
                     </button>
                 </div>
@@ -177,5 +177,12 @@
                 </div>
             </div>
         </div>
+        {% if user_values %}
+            <script type="text/javascript">
+                setTimeout(function(){ 
+                    $("#btnTestResults").click();
+                }, 1000);
+            </script>
+        {% endif %}
     {% endif %}
 {% endblock %}
